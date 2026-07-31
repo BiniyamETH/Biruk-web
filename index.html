@@ -74,7 +74,7 @@
     text-decoration:none;padding:.8rem 1.4rem;border-radius:3px;cursor:pointer;
     border:1px solid var(--gold);background:var(--gold);color:#14100A;
     transition:background .18s,border-color .18s,transform .18s}
-  .btn:hover{background:#E6C071;border-color:#E6C071;transform:translateY(-1px)}
+  .btn:hover{background:#E6C071;border-color:#E6C071;transform:translateY(-1px);box-shadow:0 10px 26px rgba(216,178,92,.3)}
   .btn.ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
   .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
   .btn.tiny{padding:.5rem 1rem;font-size:.8rem}
@@ -97,7 +97,7 @@
   @media(max-width:560px){.cols-4{grid-template-columns:1fr}}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1.7rem;
     transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
-  .card:hover{border-color:var(--gold-dim);box-shadow:0 14px 34px rgba(0,0,0,.5);transform:translateY(-3px)}
+  .card:hover{border-color:var(--gold-dim);box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 26px -10px rgba(216,178,92,.3);transform:translateY(-4px)}
   .card .num{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--gold-dim)}
   .card h3{margin:1.4rem 0 .5rem}
   .card p{font-size:.94rem;margin:0}
@@ -135,7 +135,7 @@
   .price{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:4px;
     padding:1.8rem;display:flex;flex-direction:column;
     transition:transform .2s ease,border-color .2s,box-shadow .2s}
-  .price:hover{border-color:var(--gold-dim);box-shadow:0 14px 34px rgba(0,0,0,.5);transform:translateY(-3px)}
+  .price:hover{border-color:var(--gold-dim);box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 26px -10px rgba(216,178,92,.3);transform:translateY(-4px)}
   .price.feature{border-color:var(--gold-dim);background:var(--bg-2)}
   .price.feature::after{content:'Most chosen';position:absolute;top:1.1rem;right:1.1rem;font-size:.68rem;
     letter-spacing:.1em;color:var(--gold);border:1px solid var(--gold-dim);padding:.15rem .5rem;border-radius:3px}
@@ -301,6 +301,46 @@
     box-shadow:0 24px 60px rgba(0,0,0,.55)}
   .showcase figcaption{margin-top:.9rem;font-family:var(--mono);font-size:.76rem;line-height:1.6;color:var(--dim);
     max-width:70ch}
+
+  /* ── marquee ticker ── */
+  .marquee{overflow:hidden;margin:-1rem 0 2.4rem;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .marquee-track{display:flex;gap:.5rem;width:max-content;animation:marquee 28s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{font-family:var(--mono);font-size:.72rem;color:var(--dim);
+    border:1px solid var(--line);border-radius:3px;padding:.28rem .65rem;white-space:nowrap}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+  /* ── agency comparison ── */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.6rem}
+  @media(max-width:760px){.compare{grid-template-columns:1fr}}
+  .compare-col{border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.5rem}
+  .compare-col.velora{border-color:var(--gold-dim);background:linear-gradient(180deg,rgba(216,178,92,.07),transparent 65%)}
+  .compare-label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:.9rem}
+  .compare-col.velora .compare-label{color:var(--gold)}
+  .compare-item{display:flex;gap:.7rem;padding:.7rem 0;border-top:1px solid var(--line);font-size:.92rem;color:var(--dim)}
+  .compare-item:first-of-type{border-top:0}
+  .compare-col.agency .compare-item::before{content:'—';color:var(--line-2)}
+  .compare-col.velora .compare-item::before{content:'✓';color:var(--gold)}
+  .compare-col.velora .compare-item{color:var(--text)}
+
+  /* ── hero load-in ── */
+  @keyframes heroUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .js .hero-copy>*{animation:heroUp .8s cubic-bezier(.16,1,.3,1) both}
+  .js .hero-copy>*:nth-child(1){animation-delay:.05s}
+  .js .hero-copy>*:nth-child(2){animation-delay:.15s}
+  .js .hero-copy>*:nth-child(3){animation-delay:.25s}
+  .js .hero-copy>*:nth-child(4){animation-delay:.35s}
+  .js .hero-copy>*:nth-child(5){animation-delay:.45s}
+  .js .hero-copy>*:nth-child(6){animation-delay:.55s}
+  .js .hero-art{animation:heroUp 1s cubic-bezier(.16,1,.3,1) .3s both}
+
+  /* ── ambient drift ── */
+  @keyframes heroGlow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-16px,12px) scale(1.06)}}
+  .hero::before{animation:heroGlow 16s ease-in-out infinite}
 </style>
 </head>
 <script>document.documentElement.className += ' js';</script>
@@ -325,10 +365,11 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap hero-grid">
-    <div>
+    <div class="hero-copy">
       <span class="label">Toronto • Websites • Web Apps • Software Development</span>
-      <h1 style="margin-top:1.1rem">Custom websites and software that help your business <span class="gold">grow</span>.</h1>
-      <p class="lead">Sites that get found, get calls, and show what you sell — plus the software behind them when you need it: catalogues, quote forms, inventory systems. Hand-coded, fast, and yours to keep.</p>
+      <h1 style="margin-top:1.1rem">Websites built to get your business more <span class="gold">customers</span>.</h1>
+      <p class="lead">Custom websites, quote and booking forms, product catalogues, and business software — designed to bring in enquiries and save you time. Hand-coded, fast, and yours to keep.</p>
+      <p style="font-family:var(--mono);font-size:.82rem;color:var(--dim);margin-top:.6rem">Real code, not a drag-and-drop template — built by one developer who actually answers the phone.</p>
       <div class="hero-actions">
         <a class="btn" href="#contact">Start a project</a>
         <a class="btn ghost" href="#services">See services</a>
@@ -417,11 +458,15 @@
       <h2>What I <span class="gold">do</span>.</h2>
       <p>Four services. You give me the details of the business, I build it, put it online and keep it running.</p>
     </div>
-    <div class="sectors reveal">
-      <span>Shops &amp; groceries</span><span>Trades &amp; handymen</span><span>Realtors</span>
-      <span>Cafés &amp; lounges</span><span>Importers &amp; wholesale</span><span>Salons &amp; clinics</span>
+    <div class="marquee reveal">
+      <div class="marquee-track">
+        <span>Shops &amp; groceries</span><span>Trades &amp; handymen</span><span>Realtors</span>
+        <span>Cafés &amp; lounges</span><span>Importers &amp; wholesale</span><span>Salons &amp; clinics</span>
+        <span>Shops &amp; groceries</span><span>Trades &amp; handymen</span><span>Realtors</span>
+        <span>Cafés &amp; lounges</span><span>Importers &amp; wholesale</span><span>Salons &amp; clinics</span>
+      </div>
     </div>
-    <div class="cols-4 reveal">
+    <div class="cols-4" data-stagger>
       <div class="card">
         <span class="num">01 / SITE</span>
         <h3>Business websites</h3>
@@ -461,7 +506,7 @@
       <p>Shops, trades, realtors, lounges and importers — websites that bring in enquiries, and software that runs the day-to-day behind them.</p>
     </div>
 
-    <div class="cols-4 reveal">
+    <div class="cols-4" data-stagger>
       <div class="card">
         <span class="num">TRADES</span>
         <h3>Handyman &amp; contractor sites</h3>
@@ -527,7 +572,7 @@
       <h2 style="margin:.9rem 0 1rem">Three layers, <span class="gold">all of them mine</span>.</h2>
       <p>A website is only the top layer. Most businesses eventually need the two underneath: somewhere to keep the data, and rules for what happens to it.</p>
       <p>I build all three, so your site can grow into a system instead of being rebuilt from scratch. A catalogue becomes a stock list. A contact form becomes a booking record.</p>
-      <div class="badges">
+      <div class="badges" data-stagger>
         <span class="badge"><i>✓</i><b>Websites</b></span>
         <span class="badge b"><i>✓</i><b>Web apps</b></span>
         <span class="badge"><i>✓</i><b>Online catalogues</b></span>
@@ -551,7 +596,7 @@
       <h2>Every project ships with <span class="gold">all of this</span>.</h2>
       <p>No line items added later. If it's on this list, it's in the price.</p>
     </div>
-    <div class="deliver reveal">
+    <div class="deliver" data-stagger>
       <div>Mobile, tablet and desktop layouts</div>
       <div>Your domain connected and hosting set up</div>
       <div>Tap-to-call, WhatsApp and email links</div>
@@ -565,7 +610,7 @@
       <div>A walkthrough call when it goes live</div>
       <div>30 days of fixes after launch, free</div>
     </div>
-    <div class="terms reveal">
+    <div class="terms" data-stagger>
       <div class="hud-frame"><b>Payment</b><p>50% to start, 50% on launch. Invoice with each. No subscription, no lock-in.</p></div>
       <div class="hud-frame"><b>Ownership</b><p>The code, the domain and the content are yours. Take them to another developer any time.</p></div>
       <div class="hud-frame"><b>Timeline</b><p>One week for a single page, two to three for a full site. Dates agreed before I start.</p></div>
@@ -580,9 +625,10 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="label">Why Velora</span>
-      <h2>What you get that a <span class="gold">template can't give you</span>.</h2>
+      <h2>Why businesses choose Velora <span class="gold">over a web agency</span>.</h2>
+      <p>Agencies sell you a project manager, a template and an invoice for "discovery." I skip all three — you get one developer, hand-written code, and a fixed price before anything starts.</p>
     </div>
-    <div class="why reveal">
+    <div class="why" data-stagger>
       <div><div><b>Built for your business</b><span>Not a theme adapted to fit</span></div></div>
       <div><div><b>Fast loading</b><span>Under a second, so visitors don't leave while they wait</span></div></div>
       <div><div><b>Mobile friendly</b><span>Designed for the phone first, where your customers are</span></div></div>
@@ -591,6 +637,26 @@
       <div><div><b>You own the source code</b><span>Yours on final payment — take it anywhere, any time</span></div></div>
       <div><div><b>Ongoing support</b><span>30 days of fixes free, then hourly or a monthly plan</span></div></div>
       <div><div><b>Fixed quote first</b><span>Agreed in writing before any work starts</span></div></div>
+    </div>
+
+    <h3 style="margin:2.8rem 0 0;font-family:var(--display);font-weight:600;font-size:1.15rem">Velora vs. a typical web agency</h3>
+    <div class="compare" data-stagger>
+      <div class="compare-col agency">
+        <span class="compare-label">Typical web agency</span>
+        <div class="compare-item">Account manager relays your feedback to a dev team</div>
+        <div class="compare-item">$5,000–$15,000+, billed in phases</div>
+        <div class="compare-item">4–10 weeks before you see anything</div>
+        <div class="compare-item">A template theme, customized</div>
+        <div class="compare-item">Monthly retainer to keep it running</div>
+      </div>
+      <div class="compare-col velora">
+        <span class="compare-label">Velora Software</span>
+        <div class="compare-item">You talk to the person actually writing the code</div>
+        <div class="compare-item">Starts at $450 — one fixed quote, agreed upfront</div>
+        <div class="compare-item">First version in days, live in 1–3 weeks</div>
+        <div class="compare-item">Hand-coded for your business, nothing reused</div>
+        <div class="compare-item">30 days free, then pay only if you need changes</div>
+      </div>
     </div>
 
     <!-- ⚠ STATS: uncomment only when every number is true for you. Delete the ones you can't back.
@@ -614,7 +680,7 @@
       <h2>Clear prices, <span class="gold">no surprises</span>.</h2>
       <p>Half at the start, half when it goes live. You own the domain and the code.</p>
     </div>
-    <div class="cols-3 reveal">
+    <div class="cols-3" data-stagger>
       <div class="price">
         <span class="label">Starter</span>
         <div class="amount"><em>Starting at</em>$450<small>about 1 week</small></div>
@@ -650,7 +716,7 @@
       <span class="label">About</span>
       <h2>Software that <span class="gold">earns its place</span> in your business.</h2>
     </div>
-    <figure class="showcase">
+    <figure class="showcase reveal">
       <img src="images/dashboard-showcase.jpg" loading="lazy" decoding="async"
            alt="Velora Software inventory dashboard shown on a laptop and phone, with sales, orders, customers, low-stock alerts and a sales chart"
            width="1536" height="1024">
@@ -671,6 +737,7 @@
         </ul>
         <p style="margin-top:1.3rem">You don't need to know what you want technically — describe how the business works, in English or Amharic, and I'll turn it into something that runs. A photo of the shop, a price list on paper or a voice note is enough to start.</p>
         <p style="color:var(--text);border-left:2px solid var(--gold);padding-left:1rem">Every project is built for your business alone. No templates, no outsourcing — you work directly with the developer from start to finish.</p>
+        <p style="margin-top:1rem">I'd rather build three sites properly this month than sell twenty and disappear. If that's not how you expect to be treated, we're probably not a fit — and that's fine.</p>
       </div>
     </div>
 
@@ -686,7 +753,7 @@
       <span class="label">How it works</span>
       <h2>Three steps, about <span class="gold">two weeks</span>.</h2>
     </div>
-    <div class="steps reveal">
+    <div class="steps" data-stagger>
       <div class="step"><h3>You send the details</h3><p>Photos, services or products, prices, hours, phone number. WhatsApp is fine.</p></div>
       <div class="step"><h3>I build a first version</h3><p>You get a link in a few days. Tell me what to change — colours, wording, photos, anything.</p></div>
       <div class="step"><h3>It goes live</h3><p>Domain connected, site online. Later updates are one message away.</p></div>
@@ -703,7 +770,7 @@
       <span class="label">Questions</span>
       <h2>Asked before <span class="gold">every project</span>.</h2>
     </div>
-    <div class="reveal">
+    <div data-stagger>
       <details class="faq"><summary>I don't have photos or text. Can you still build it?</summary>
         <p>Yes. Most owners start with nothing written down. Send phone photos of the shop and the products, tell me the prices and hours in a voice note if that's easier, and I'll write the wording and edit the photos. You approve everything before it goes live.</p></details>
       <details class="faq"><summary>What do you need from me to start?</summary>
@@ -769,7 +836,7 @@
     <div class="footgrid">
       <div>
         <div class="mark" style="margin-bottom:.9rem"><img src="images/logo2.png" alt="Velora Software"></div>
-        <p style="margin:0;font-size:.9rem;max-width:36ch">Websites, web applications, inventory systems and custom software for growing businesses. Toronto and remote.</p>
+        <p style="margin:0;font-size:.9rem;max-width:36ch">Hand-coded websites and software for businesses that don't want to wait in an agency's queue. Toronto and remote.</p>
       </div>
       <div>
         <h4>Services</h4>
@@ -840,6 +907,16 @@
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, { threshold: .12 });
+
+  /* stagger: each child of a [data-stagger] container reveals on its own, in sequence */
+  document.querySelectorAll('[data-stagger]').forEach(function (container) {
+    Array.prototype.forEach.call(container.children, function (child, i) {
+      child.classList.add('reveal');
+      if (!reduce) { child.style.transitionDelay = (Math.min(i, 6) * 70) + 'ms'; }
+      io.observe(child);
+    });
+  });
+
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 
   /* ---------- contact form ----------
