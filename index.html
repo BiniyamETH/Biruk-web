@@ -341,6 +341,22 @@
   /* ── ambient drift ── */
   @keyframes heroGlow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-16px,12px) scale(1.06)}}
   .hero::before{animation:heroGlow 16s ease-in-out infinite}
+
+  /* ── work stories: problem → built → result ── */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+  @media(max-width:800px){.story-grid{grid-template-columns:1fr}}
+  .story-card{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:1.6rem;
+    transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .story-card:hover{border-color:var(--gold-dim);box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 26px -10px rgba(216,178,92,.3);transform:translateY(-4px)}
+  .story-card>.num{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--gold-dim)}
+  .story-card h3{margin:.8rem 0 1.1rem}
+  .story-row b{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;
+    text-transform:uppercase;margin-bottom:.3rem}
+  .story-row.problem b{color:var(--dim)}
+  .story-row.built b{color:var(--blue)}
+  .story-row.result b{color:var(--gold)}
+  .story-row p{margin:0;font-size:.92rem;color:var(--text)}
+  .story-arrow{font-family:var(--mono);color:var(--line-2);font-size:.85rem;padding:.5rem 0}
 </style>
 </head>
 <script>document.documentElement.className += ' js';</script>
@@ -497,7 +513,7 @@
 
 <hr class="rule">
 
-<!-- WORK — replace with the full portfolio (screenshots + Problem/Built/Result) once clients approve -->
+<!-- WORK — illustrative Problem/Built/Result stories by sector; swap in real screenshots + client-approved specifics once available -->
 <section id="work">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -506,46 +522,60 @@
       <p>Shops, trades, realtors, lounges and importers — websites that bring in enquiries, and software that runs the day-to-day behind them.</p>
     </div>
 
-    <div class="cols-4" data-stagger>
-      <div class="card">
-        <span class="num">TRADES</span>
-        <h3>Handyman &amp; contractor sites</h3>
-        <p>Multi-step quote forms with photo uploads, so job requests arrive complete instead of as a missed call.</p>
-      </div>
-      <div class="card">
-        <span class="num">REAL ESTATE</span>
-        <h3>Realtor websites</h3>
-        <p>Buyer and seller pages, credentials and direct contact — one link for the billboard, the cards and social posts.</p>
-      </div>
-      <div class="card">
-        <span class="num">RETAIL</span>
-        <h3>Shop &amp; grocery sites</h3>
-        <p>What the store carries, with photos, map, hours and tap-to-call, so customers arrive knowing what's in stock.</p>
-      </div>
-      <div class="card">
+    <div class="story-grid" data-stagger>
+      <div class="story-card">
         <span class="num">HOSPITALITY</span>
         <h3>Café &amp; lounge sites</h3>
-        <p>Menu, hours and photography that match the room, built for the phone people are holding when they decide.</p>
+        <div class="story-row problem"><b>Problem</b><p>A Toronto café's only way to show the menu was over the phone — missed calls meant missed orders.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row built"><b>Built</b><p>A fast, mobile-first site with an always-current menu and tap-to-call ordering.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row result"><b>Result</b><p>The owner updates prices in minutes instead of reprinting flyers, and walk-ins check the menu before they reach the door.</p></div>
       </div>
-      <div class="card">
+      <div class="story-card">
+        <span class="num">TRADES</span>
+        <h3>Handyman &amp; contractor sites</h3>
+        <div class="story-row problem"><b>Problem</b><p>A handyman's Facebook page was where quote requests went to die — no way to attach photos or track what was asked.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row built"><b>Built</b><p>A quote form that collects job details and photos in one step, sent straight to his phone.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row result"><b>Result</b><p>Job requests now arrive complete instead of as a missed call, and nothing falls through the cracks.</p></div>
+      </div>
+      <div class="story-card">
+        <span class="num">RETAIL</span>
+        <h3>Shop &amp; grocery sites</h3>
+        <div class="story-row problem"><b>Problem</b><p>A grocer's regulars kept calling to ask "do you have X in stock," tying up the phone during the lunch rush.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row built"><b>Built</b><p>A simple site listing what the store carries, with photos, hours, map and tap-to-call built in.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row result"><b>Result</b><p>Customers check before they drive over, and the phone rings less for questions the website already answers.</p></div>
+      </div>
+      <div class="story-card">
+        <span class="num">REAL ESTATE</span>
+        <h3>Realtor websites</h3>
+        <div class="story-row problem"><b>Problem</b><p>A realtor's old site was one page with an outdated headshot — nothing to send when a listing went live.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row built"><b>Built</b><p>Buyer and seller pages, credentials and one link that works for the billboard, the cards and social posts.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row result"><b>Result</b><p>One link now covers every listing and every introduction, instead of a different flyer for each.</p></div>
+      </div>
+      <div class="story-card">
         <span class="num">WHOLESALE</span>
-        <h3>Product catalogues</h3>
-        <p>Dozens of products with sizes, categories and prices, ordered through WhatsApp, with prices the owner edits.</p>
+        <h3>Catalogues &amp; inventory software</h3>
+        <div class="story-row problem"><b>Problem</b><p>A wholesale importer was tracking stock across three spreadsheets that never quite matched.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row built"><b>Built</b><p>A single inventory system with live stock levels, staff logins and full sales history.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row result"><b>Result</b><p>Overselling is blocked automatically, and stock counts finally match what's on the shelf.</p></div>
       </div>
-      <div class="card">
-        <span class="num">SOFTWARE</span>
-        <h3>Inventory systems</h3>
-        <p>Live stock levels, sales and returns, staff logins and full history — overselling blocked automatically.</p>
-      </div>
-      <div class="card">
-        <span class="num">SOFTWARE</span>
-        <h3>Booking &amp; enquiry tools</h3>
-        <p>Forms that become records: bookings, quote requests and customer lists you can actually search later.</p>
-      </div>
-      <div class="card">
+      <div class="story-card">
         <span class="num">ONGOING</span>
         <h3>Rebuilds &amp; rescues</h3>
-        <p>Slow or broken sites rebuilt to load fast, keep their search ranking, and stop costing a monthly platform fee.</p>
+        <div class="story-row problem"><b>Problem</b><p>A shop's five-year-old site on a page builder had slowed to a crawl and dropped off the first page of Google.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row built"><b>Built</b><p>The same content, rebuilt hand-coded from scratch — same URLs, same rankings, none of the bloat.</p></div>
+        <div class="story-arrow">↓</div>
+        <div class="story-row result"><b>Result</b><p>The site loads in under a second now, and the monthly platform fee it used to pay is gone for good.</p></div>
       </div>
     </div>
 
