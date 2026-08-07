@@ -829,6 +829,7 @@
           </select>
         </div>
         <div class="field"><label for="msg">Details</label><textarea id="msg" rows="4"></textarea></div>
+        <input type="checkbox" id="botcheck" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
         <button class="btn" id="send" type="button">Send message</button>
         <p id="note" style="font-size:.8rem;min-height:1.2em;margin:0"></p>
       </div>
@@ -936,14 +937,13 @@
 
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 
-  /* ---------- contact form ----------
-     Put your endpoint below and the form posts straight from the page —
-     no email app needed. Free options: formspree.io, formsubmit.co,
-     or a Supabase table + edge function.
+  /* ---------- contact form (Web3Forms) ----------
+     Get a free access key at https://web3forms.com (just needs your email)
+     and paste it below — submissions get emailed straight to that inbox.
      Leave it empty and the form falls back to opening the email app. */
   /* ⚠ EDIT THESE FOUR LINES BEFORE LAUNCH — then search the HTML for
      hello@velorasoftware.ca, 14160000000 and YOUR-LINKEDIN and replace those too. */
-  var FORM_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxxxxx'
+  var WEB3FORMS_ACCESS_KEY = '21dffafe-1061-4831-b7e4-c0cfdf95bb91';
   var EMAIL   = 'hello@velorasoftware.ca';
   var PHONE   = '+14160000000';
   var WHATSAPP = '14160000000';
@@ -967,7 +967,7 @@
       details: v('msg')
     };
 
-    if (!FORM_ENDPOINT) {
+    if (!WEB3FORMS_ACCESS_KEY) {
       var body = 'Name: ' + payload.name + '\nBusiness: ' + payload.business +
                  '\nContact: ' + payload.contact + '\nNeeds: ' + payload.needs +
                  '\n\n' + payload.details;
@@ -986,12 +986,22 @@
     note.textContent = '';
 
     try {
-      var res = await fetch(FORM_ENDPOINT, {
+      var res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'Website request — ' + (payload.business || payload.name),
+          name: payload.name,
+          business: payload.business,
+          contact: payload.contact,
+          needs: payload.needs,
+          message: payload.details,
+          botcheck: document.getElementById('botcheck').checked
+        })
       });
-      if (!res.ok) throw new Error('bad status ' + res.status);
+      var data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || 'bad status ' + res.status);
 
       document.querySelector('.form').innerHTML =
         '<div style="border:1px solid var(--gold-dim);border-radius:4px;padding:1.6rem">' +
