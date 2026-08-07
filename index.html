@@ -991,6 +991,7 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
+          from_name: 'Velora',
           subject: 'Website request — ' + (payload.business || payload.name),
           name: payload.name,
           business: payload.business,
