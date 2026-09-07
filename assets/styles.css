@@ -48,18 +48,20 @@
   .nav-toggle.open span::before{transform:translate(-50%,-50%) rotate(45deg)}
   .nav-toggle.open span::after{transform:translate(-50%,-50%) rotate(-45deg)}
   @media(max-width:820px){
-    /* mobile: links live inside a dropdown you open from the Menu button */
-    .nav{flex-wrap:nowrap;gap:.55rem;padding:.85rem 0}
-    .mark{margin-right:auto}
-    .nav-toggle{display:inline-flex;align-items:center;gap:.5rem;
-      width:auto;height:auto;padding:.5rem .85rem;color:var(--text);
+    /* mobile: Menu (left) · logo (centre) · Contact (right); links in a dropdown */
+    .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.5rem;padding:.85rem 0}
+    .mark{grid-area:1/2;justify-self:center}
+    .mark img{height:40px}
+    .nav-toggle{grid-area:1/1;justify-self:start;
+      display:inline-flex;align-items:center;gap:.5rem;
+      width:auto;height:auto;padding:.5rem .8rem;color:var(--text);
       font:500 .84rem/1 var(--body)}
     .nav-toggle span{display:none}
     .nav-toggle::before{content:'\2630';font-size:1.05rem;line-height:1}
     .nav-toggle::after{content:'Menu'}
     .nav-toggle.open::before{content:'\2715';font-size:.95rem}
     .nav-toggle.open::after{content:'Close'}
-    .nav .btn.tiny{padding:.55rem 1.05rem;font-size:.84rem}
+    .nav .btn.tiny{grid-area:1/3;justify-self:end;padding:.5rem .95rem;font-size:.83rem}
     .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;
       align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);
       max-height:0;overflow:hidden;transition:max-height .28s ease;font-size:.98rem}
