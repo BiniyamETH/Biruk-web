@@ -106,6 +106,27 @@
   .card li{padding:.3rem 0;display:flex;gap:.5rem}
   .card li::before{content:'—';color:var(--gold-dim)}
 
+  /* layered stack (3D) + its Contact CTA — Services page hero art */
+  .svc-art{border:1px solid var(--line);border-radius:6px;padding:1.1rem;display:grid;gap:.9rem;
+    background:linear-gradient(180deg,rgba(216,178,92,.06),transparent 62%)}
+  .svc-art .btn{width:100%;justify-content:center}
+  .stack{perspective:1000px;height:210px;display:grid;place-items:center;overflow:hidden}
+  .layers{position:relative;width:230px;height:150px;transform-style:preserve-3d;
+    transform:rotateX(56deg) rotateZ(-40deg)}
+  .layer{position:absolute;inset:0;border:1px solid var(--line-2);
+    background:linear-gradient(135deg,#141A26,#0E131C);border-radius:4px;
+    display:flex;align-items:flex-end;padding:.55rem;font-size:.6rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--dim);box-shadow:0 12px 26px rgba(0,0,0,.5)}
+  .layer:nth-child(1){transform:translateZ(0)}
+  .layer:nth-child(2){transform:translateZ(38px)}
+  .layer:nth-child(3){transform:translateZ(76px);border-color:var(--gold-dim);color:var(--gold)}
+  @media(max-width:940px){
+    .svc-art{max-width:360px;margin-inline:auto}
+  }
+  @media(max-width:600px){
+    .stack{height:180px}
+  }
+
   /* steps */
   .steps{position:relative;padding-left:2.4rem}
   .steps::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--line)}
