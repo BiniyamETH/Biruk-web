@@ -52,7 +52,7 @@
     .nav{flex-wrap:wrap;row-gap:0;padding:.85rem 0}
     .nav-toggle{display:none}
     .mark{order:1}
-    .nav .btn.tiny{order:2}
+    .nav .btn.tiny{order:2;padding:.6rem 1.3rem;font-size:.85rem}
     .nav-links{order:3;flex-basis:100%;position:static;flex-direction:row;flex-wrap:wrap;
       justify-content:center;gap:0;max-height:none;overflow:visible;
       background:none;border:0;border-top:1px solid var(--line);
@@ -68,8 +68,6 @@
     section{padding:2.6rem 0}
     .sec-head{margin-bottom:1.7rem}
     .marquee{margin-top:0}
-    #services .hero-grid .hero-art{display:none}
-    #services .hero-grid{margin-bottom:.6rem!important}
   }
 
   /* buttons */
@@ -107,20 +105,6 @@
   .card ul{list-style:none;padding:0;margin:1rem 0 0;font-size:.9rem;color:var(--dim)}
   .card li{padding:.3rem 0;display:flex;gap:.5rem}
   .card li::before{content:'—';color:var(--gold-dim)}
-
-  /* layered stack (3D) */
-  .stack-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-  @media(max-width:900px){.stack-wrap{grid-template-columns:1fr}}
-  .stack{perspective:1200px;height:340px;display:grid;place-items:center}
-  .layers{position:relative;width:280px;height:190px;transform-style:preserve-3d;
-    transform:rotateX(58deg) rotateZ(-38deg);transition:transform .4s ease}
-  
-  .layer{position:absolute;inset:0;border:1px solid var(--line-2);background:linear-gradient(135deg,#141A26,#0E131C);
-    border-radius:4px;display:flex;align-items:flex-end;padding:.7rem;font-size:.72rem;
-    letter-spacing:.1em;text-transform:uppercase;color:var(--dim);box-shadow:0 14px 30px rgba(0,0,0,.5)}
-  .layer:nth-child(1){transform:translateZ(0)}
-  .layer:nth-child(2){transform:translateZ(46px)}
-  .layer:nth-child(3){transform:translateZ(92px);border-color:var(--gold-dim);color:var(--gold)}
 
   /* steps */
   .steps{position:relative;padding-left:2.4rem}
