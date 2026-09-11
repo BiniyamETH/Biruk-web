@@ -224,6 +224,15 @@
   .float-wa{position:fixed;right:18px;bottom:18px;z-index:50;font-weight:600;font-size:.85rem;
     text-decoration:none;padding:.75rem 1.15rem;border-radius:3px;background:var(--gold);color:#14100A;
     box-shadow:0 6px 20px rgba(0,0,0,.5)}
+  /* on short/narrow screens the pill covers card CTAs pinned near the bottom-right
+     (e.g. the pricing page's first "Start here" button) — shrink it to a compact
+     circular button so it only ever clips a small corner, not the button itself */
+  @media(max-width:600px){
+    .float-wa{right:14px;bottom:14px;width:48px;height:48px;padding:0;
+      display:flex;align-items:center;justify-content:center;border-radius:50%;
+      font-size:0;line-height:0}
+    .float-wa::before{content:'WA';font-size:.7rem;font-weight:700;letter-spacing:.02em}
+  }
 
   a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
     outline:2px solid var(--blue);outline-offset:2px}
