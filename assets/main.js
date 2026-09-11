@@ -22,6 +22,25 @@
     navLinks.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
   }
 
+  /* ---------- "More" nav dropdown ---------- */
+  document.querySelectorAll('.nav-more').forEach(function (wrap) {
+    var toggle = wrap.querySelector('.nav-more-toggle');
+    var panel = wrap.querySelector('.nav-more-panel');
+    if (!toggle || !panel) { return; }
+    var closeMore = function () {
+      wrap.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = wrap.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMore); });
+    document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { closeMore(); } });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeMore(); } });
+  });
+
   /* ---------- scroll reveal ---------- */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
