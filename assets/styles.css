@@ -449,6 +449,21 @@
   .prose p,.prose li{color:var(--dim);font-size:.97rem}
   .prose ul{padding-left:1.2rem;margin:.4rem 0}
   .prose a{color:var(--gold)}
+  /* Business service pages and discovery links */
+  .business-intro{border-bottom:1px solid var(--line);background:radial-gradient(ellipse at top right,rgba(216,178,92,.08),transparent 65%)}
+  .business-intro h1{max-width:21ch;margin:1rem 0}
+  .business-intro .lead{max-width:65ch;font-size:1.1rem}
+  .breadcrumbs{display:flex;flex-wrap:wrap;gap:.6rem;font-size:.8rem;color:var(--dim);margin-bottom:2rem}
+  .breadcrumbs a{text-decoration:none}.breadcrumbs a:hover{color:var(--gold)}
+  .business-details{background:var(--bg-2)}
+  .scope-note{border-left:3px solid var(--gold);padding:1rem 1.3rem;margin-top:2rem;max-width:80ch;font-size:.95rem}
+  .business-process .feature-card{height:100%}
+  .business-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+  .business-links a{padding:.7rem 1rem;border:1px solid var(--line-2);border-radius:4px;text-decoration:none;font-size:.85rem;color:var(--text);background:var(--panel)}
+  .business-links a:hover{border-color:var(--gold);color:var(--gold)}
+  [id]{scroll-margin-top:100px}
+  @media(min-width:821px){.nav-links{gap:1.2rem}.nav-links .avail{display:none}}
+  @media(max-width:520px){.business-intro h1{font-size:2rem}.business-links{flex-direction:column}.business-links a{width:100%}}
 
   /* ── software-first homepage ── */
   .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
