@@ -669,6 +669,9 @@
   .software-split{gap:clamp(2rem,5vw,5rem)}
   .software-list span{padding:.8rem .85rem;color:var(--text)}
   .tech-grid{gap:.7rem}.tech-chip{padding:.6rem .8rem}.tech-chip i{border-radius:6px}
+  .tech-stack-groups{display:grid;grid-template-columns:1fr 1fr;gap:1.7rem 2.5rem}
+  .tech-stack-group h3{margin:0 0 .8rem;color:var(--dim);font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase}
+  .tech-stack-group .tech-grid{align-content:flex-start}
   .proof-strip,.stats,.specs{border-color:var(--line);background:rgba(17,26,43,.75)}
   .proof-strip{border-radius:13px}.proof-strip div{padding:1.35rem}
   .proof-strip b{font-size:.95rem}.proof-strip span{letter-spacing:.04em}
@@ -764,6 +767,7 @@
   .experience-list span{border:1px solid var(--line);border-radius:8px;padding:.65rem .75rem;background:rgba(8,12,22,.42);font-size:.81rem;color:var(--text)}
   @media(max-width:800px){.founder-spotlight-grid,.experience-panel{grid-template-columns:1fr}}
   @media(max-width:520px){.experience-list{grid-template-columns:1fr}}
+  @media(max-width:700px){.tech-stack-groups{grid-template-columns:1fr;gap:1.5rem}}
 
   /* Service discovery inspired by marketplace clarity, designed for Velora */
   .service-finder-section{padding:clamp(3.4rem,6vw,5.5rem) 0;background:linear-gradient(180deg,rgba(13,21,36,.7),rgba(8,12,22,.25))}
