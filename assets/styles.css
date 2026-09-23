@@ -769,6 +769,47 @@
   @media(max-width:520px){.experience-list{grid-template-columns:1fr}}
   @media(max-width:700px){.tech-stack-groups{grid-template-columns:1fr;gap:1.5rem}}
 
+  /* Compact About hero keeps the product preview above the fold */
+  .about-page #about{padding-top:clamp(3.5rem,6vw,5.5rem)}
+  .about-hero{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+  .about-hero .sec-head{margin:0;max-width:600px}
+  .about-page #about .about-hero .sec-head h1{font-size:clamp(2.8rem,4.2vw,4.65rem);max-width:12ch;margin-top:1rem}
+  .about-hero .sec-head p{max-width:46ch;margin-top:1.25rem}
+  .about-hero .showcase{margin:0;min-width:0}
+  .about-hero .showcase img{width:100%;max-height:440px;object-fit:contain}
+  .about-hero .showcase figcaption{margin-top:.65rem}
+  .about-page .aboutgrid{margin-top:clamp(3rem,6vw,5rem)}
+  @media(max-width:900px){
+    .about-hero{grid-template-columns:1fr;gap:2rem}.about-page #about .about-hero .sec-head h1{max-width:15ch}.about-hero .showcase{max-width:760px}
+  }
+
+  /* Shared viewport-fit pass: keep every page introduction readable above the fold */
+  @media(min-width:941px){
+    header.top .nav{min-height:76px}
+    .hero{padding:clamp(3rem,4.5vw,4.25rem) 0 clamp(3.5rem,5vw,4.75rem)}
+    .hero h1{font-size:clamp(3rem,4.5vw,4.25rem)}
+    .hero-art{max-width:610px}
+    .hero .specs{margin-top:1.5rem}
+    main>section:first-child:not(.hero){padding:clamp(3rem,4.5vw,4.25rem) 0 clamp(3.5rem,5vw,4.75rem)}
+    main>section:first-child:not(.hero)>.wrap>.sec-head:first-child{margin-bottom:2.5rem}
+    main>section:first-child:not(.hero)>.wrap>.sec-head:first-child :is(h1,h2){font-size:clamp(2.8rem,4vw,3.8rem)}
+    .business-intro{padding:clamp(3rem,4.5vw,4.25rem) 0 clamp(3.5rem,5vw,4.75rem)!important}
+    .business-intro h1{font-size:clamp(2.8rem,4vw,3.8rem);margin:.9rem 0 1.1rem}
+    .business-intro .hero-actions{margin-top:1.5rem}
+    .breadcrumbs{margin-bottom:1.5rem}
+    .about-page #about{padding-top:clamp(3rem,4.5vw,4.25rem)}
+  }
+  @media(max-width:940px){
+    main>section:first-child:not(.hero){padding-top:3.4rem}
+    main>section:first-child:not(.hero)>.wrap>.sec-head:first-child{margin-bottom:2.4rem}
+    .business-intro{padding:3.4rem 0 4rem}
+  }
+  @media(max-width:600px){
+    .hero{padding:3rem 0 3.5rem}
+    main>section:first-child:not(.hero),.business-intro{padding:2.8rem 0 3.2rem}
+    .breadcrumbs{margin-bottom:1.5rem}
+  }
+
   /* Service discovery inspired by marketplace clarity, designed for Velora */
   .service-finder-section{padding:clamp(3.4rem,6vw,5.5rem) 0;background:linear-gradient(180deg,rgba(13,21,36,.7),rgba(8,12,22,.25))}
   .service-finder{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(2rem,6vw,6rem);align-items:center;padding:clamp(1.5rem,4vw,3.5rem);border:1px solid rgba(141,167,223,.22);border-radius:20px;background:radial-gradient(circle at 5% 15%,rgba(232,197,121,.1),transparent 34%),linear-gradient(135deg,rgba(25,38,61,.94),rgba(12,19,32,.98));box-shadow:0 24px 70px rgba(0,0,0,.25)}
