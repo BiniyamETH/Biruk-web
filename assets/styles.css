@@ -540,9 +540,6 @@
   .software-list span::before{content:'✓';color:var(--gold);margin-right:.45rem}
   @media(max-width:520px){.software-list{grid-template-columns:1fr}}
 
-  .tech-grid{display:flex;flex-wrap:wrap;gap:.65rem}
-  .tech-chip{display:flex;align-items:center;gap:.55rem;padding:.55rem .75rem;border:1px solid var(--line);border-radius:4px;background:var(--panel);font-size:.82rem;color:var(--text)}
-  .tech-chip i{display:grid;place-items:center;width:25px;height:25px;border-radius:3px;background:var(--bg-2);color:var(--gold);font:600 .58rem var(--mono);font-style:normal}
 
   /* ── software page ── */
   .feature-matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
@@ -654,9 +651,9 @@
   .feature-card{padding:1.65rem}.feature-card .feature-mark{border-radius:9px;width:42px;height:42px}
   .feature-card h3{font-size:1.18rem}
   .business-details{background:linear-gradient(180deg,#0d1423,#0a111f)}
-  .business-links a,.software-list span,.tech-chip,.badge,.sectors span,.tag,.case-tags span{
+  .business-links a,.software-list span,.badge,.sectors span,.tag,.case-tags span{
     border-radius:8px;background:rgba(24,37,59,.8);border-color:var(--line)}
-  .business-links a:hover,.tech-chip:hover{background:rgba(115,169,255,.1);border-color:var(--blue)}
+  .business-links a:hover{background:rgba(115,169,255,.1);border-color:var(--blue)}
   .scope-note{border-left-color:var(--gold);background:rgba(232,197,121,.05);border-radius:0 9px 9px 0}
 
   .shot-card{padding:0;border-radius:14px}.shot-card .shot{aspect-ratio:16/10}
@@ -668,10 +665,6 @@
   .showcase figcaption{font-family:var(--body);font-size:.82rem}
   .software-split{gap:clamp(2rem,5vw,5rem)}
   .software-list span{padding:.8rem .85rem;color:var(--text)}
-  .tech-grid{gap:.7rem}.tech-chip{padding:.6rem .8rem}.tech-chip i{border-radius:6px}
-  .tech-stack-groups{display:grid;grid-template-columns:1fr 1fr;gap:1.7rem 2.5rem}
-  .tech-stack-group h3{margin:0 0 .8rem;color:var(--dim);font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase}
-  .tech-stack-group .tech-grid{align-content:flex-start}
   .proof-strip,.stats,.specs{border-color:var(--line);background:rgba(17,26,43,.75)}
   .proof-strip{border-radius:13px}.proof-strip div{padding:1.35rem}
   .proof-strip b{font-size:.95rem}.proof-strip span{letter-spacing:.04em}
@@ -767,7 +760,6 @@
   .experience-list span{border:1px solid var(--line);border-radius:8px;padding:.65rem .75rem;background:rgba(8,12,22,.42);font-size:.81rem;color:var(--text)}
   @media(max-width:800px){.founder-spotlight-grid,.experience-panel{grid-template-columns:1fr}}
   @media(max-width:520px){.experience-list{grid-template-columns:1fr}}
-  @media(max-width:700px){.tech-stack-groups{grid-template-columns:1fr;gap:1.5rem}}
 
   /* Compact About hero keeps the product preview above the fold */
   .about-page #about{padding-top:clamp(3.5rem,6vw,5.5rem)}
