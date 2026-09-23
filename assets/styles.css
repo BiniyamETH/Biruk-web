@@ -4,9 +4,9 @@
     --line:#24334B; --line-2:#344A67;
     --text:#F4F7FC; --dim:#ABB8CC;
     --gold:#E8C579; --gold-dim:#9C7D42; --blue:#73A9FF;
-    --display:'Space Grotesk',system-ui,sans-serif;
-    --body:'Inter',system-ui,sans-serif;
-    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --display:'Segoe UI Variable Display','Segoe UI',system-ui,sans-serif;
+    --body:'Segoe UI Variable Text','Segoe UI',system-ui,sans-serif;
+    --mono:'Cascadia Mono','Consolas',ui-monospace,monospace;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
