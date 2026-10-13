@@ -142,6 +142,10 @@
   .shot-card .num,.shot-card h3,.shot-card p,.shot-card .go{padding-inline:1.7rem}
   .shot-card .num{display:block;margin-top:1.3rem}
   .shot-card .go{display:block;padding-bottom:1.7rem}
+  .concept-card{margin:0}
+  .concept-card .shot{aspect-ratio:4/3}
+  .concept-card .shot img{object-position:center}
+  .concept-card h3{padding-bottom:1.5rem}
   .card p{font-size:.94rem;margin:0}
   .card ul{list-style:none;padding:0;margin:1rem 0 0;font-size:.9rem;color:var(--dim)}
   .card li{padding:.3rem 0;display:flex;gap:.5rem}
