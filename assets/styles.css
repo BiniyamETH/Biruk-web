@@ -801,6 +801,7 @@
   .service-finder h2{font-size:clamp(2rem,3.5vw,3.15rem);margin:.8rem 0 1rem}
   .service-finder-copy p{max-width:42ch;margin:0}
   .service-finder-options{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .service-finder-options a{text-decoration:none}
   .service-finder-options a:last-child:nth-child(odd){grid-column:1/-1}
   .service-finder-options a{display:grid;grid-template-columns:auto 1fr auto;gap:.8rem;align-items:center;min-height:88px;padding:1rem;border:1px solid var(--line);border-radius:11px;background:rgba(7,12,21,.56);transition:border-color .2s,transform .2s,background .2s}
   .service-finder-options a:hover{transform:translateY(-2px);border-color:rgba(232,197,121,.65);background:rgba(30,42,64,.78)}
