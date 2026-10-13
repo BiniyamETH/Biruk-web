@@ -143,9 +143,14 @@
   .shot-card .num{display:block;margin-top:1.3rem}
   .shot-card .go{display:block;padding-bottom:1.7rem}
   .concept-card{margin:0}
-  .concept-card .shot{aspect-ratio:4/3}
-  .concept-card .shot img{object-position:center}
+  .shot-card.concept-card .shot{aspect-ratio:4/3}
+  .concept-card .shot img{object-position:top center}
   .concept-card h3{padding-bottom:1.5rem}
+  .concept-tall-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  @media(max-width:900px){.concept-tall-grid{grid-template-columns:repeat(2,1fr)}}
+  .shot-card.concept-tall .shot{aspect-ratio:3/4}
+  .concept-tall .shot img{object-position:top center}
+  @media(max-width:560px){.shot-card.concept-tall .num,.shot-card.concept-tall h3{padding-inline:1rem}.shot-card.concept-tall h3{font-size:1rem}}
   .card p{font-size:.94rem;margin:0}
   .card ul{list-style:none;padding:0;margin:1rem 0 0;font-size:.9rem;color:var(--dim)}
   .card li{padding:.3rem 0;display:flex;gap:.5rem}
